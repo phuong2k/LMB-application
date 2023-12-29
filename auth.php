@@ -35,10 +35,10 @@ if ($response) {
         setcookie('token', $token, time() + 3600, '/'); 
 
     } else {
-        echo 'Yêu cầu không thành công. Code: ' . $responseData['code'] . ', Message: ' . $responseData['message'];
+        echo 'Request unsuccessful. Code: ' . $responseData['code'] . ', Message: ' . $responseData['message'];
     }
 } else {
-    echo 'Không nhận được phản hồi từ API.';
+    echo 'No response received from the API.';
 }
 
 ?>
