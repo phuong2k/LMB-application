@@ -5,6 +5,10 @@ $apiUrl = "https://evaluation-technique.lundimatin.biz/api/clients?fields=nom,ad
 
 $token = isset($_COOKIE['token']) ? $_COOKIE['token'] : '';
 
+if (isset($_POST['search'])) {
+    $keyword = $_POST["keyword"];
+    $apiUrl .= "&nom=" . urlencode($keyword);
+}
 if (empty($token)) {
     echo 'Token not found. Please authenticate first.';
     exit;
@@ -66,13 +70,13 @@ function getFirstKeyword($string) {
                 <h1>Rechercher d'une fiche de contact</h1>
             </div>
             <div class="container-search">
-                <form action="clients" method="post">
+                <form action="index.php" method="post">
                     <lable>Renseiger un nom ou une denomination</lable>
                     <div class="form-field">
                         <input type="text" class="form-control" name="keyword" id="" placeholder="Nom ou denomination">
                     </div>
                     <div class="form-field d-flex justify-content-end">
-                        <input type="submit" class="btn btn-primary" value="Rechercher" name="create">
+                        <input type="submit" class="btn btn-primary" value="Rechercher" name="search">
                     </div>
                 </form>
             </div>
